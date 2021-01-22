@@ -111,7 +111,7 @@ func Tags(tags []byte) func(Call) error {
 	return func(o Call) error {
 		m, ok := o.(*Mutate)
 		if !ok {
-			return errors.New("'TimestampUint64' option can only be used with mutation queries")
+			return errors.New("'Tags' option can only be used with mutation queries")
 		}
 		m.tags = tags
 		return nil
