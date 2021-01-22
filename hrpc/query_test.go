@@ -214,6 +214,6 @@ func TestMutateWithTag(t *testing.T) {
 	values := map[string]map[string][]byte{"cf": map[string][]byte{"a": []byte("1")}}
 	putRequest, err := NewPutStr(context.Background(), "test_table", "test_key", values, Tags([]byte{0, 1, 0, 1}))
 	assert.Nil(t, err)
-	assert.NotNil(putRequest.tags)
+	assert.NotNil(t, putRequest.tags)
 	assert.Equal(t, len(putRequest.tags), 4)
 }
