@@ -342,7 +342,7 @@ func (m *Mutate) valuesToProto(ts *uint64) []*pb.MutationProto_ColumnValue {
 				Value:      v1,
 				Timestamp:  ts,
 				DeleteType: dt,
-				Tags: m.tags,
+				Tags:       m.tags,
 			}
 			j++
 		}
