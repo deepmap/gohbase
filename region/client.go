@@ -588,9 +588,9 @@ func (c *client) sendHello() error {
 			EffectiveUser: proto.String(c.effectiveUser),
 		},
 		ServiceName:         proto.String(string(c.ctype)),
-		CellBlockCodecClass: proto.String("org.apache.hadoop.hbase.codec.KeyValueCodecWithTags"),
+		CellBlockCodecClass: proto.String("org.apache.hadoop.hbase.codec.KeyValueCodec"),
 	}
-	log.Info("Use KeyValueCodecWithTags")
+	log.Info("Use KeyValueCodec")
 	if c.compressor != nil {
 		// if we have compression enabled, specify the compressor class
 		connHeader.CellBlockCompressorClass = proto.String(c.compressor.CellBlockCompressorClass())
