@@ -79,7 +79,7 @@ func TestSendHello(t *testing.T) {
 	// check if it's sending the right "hello" for RegionClient
 	mockConn.EXPECT().Write(gomock.Any()).Return(78, nil).Times(1).Do(func(buf []byte) {
 		expected := []byte("HBas\x00P\x00\x00\x00D\n\x06\n\x04root\x12\rClientService\x1a+" +
-			"org.apache.hadoop.hbase.codec.KeyValueCodec")
+			"org.apache.hadoop.hbase.codec.KeyValueCodecWithTags")
 		if !bytes.Equal(expected, buf) {
 			t.Errorf("expected %v, got %v", expected, buf)
 		}
@@ -93,7 +93,7 @@ func TestSendHello(t *testing.T) {
 	c.ctype = MasterClient
 	mockConn.EXPECT().Write(gomock.Any()).Return(78, nil).Times(1).Do(func(buf []byte) {
 		expected := []byte("HBas\x00P\x00\x00\x00D\n\x06\n\x04root\x12\rMasterService\x1a+" +
-			"org.apache.hadoop.hbase.codec.KeyValueCodec")
+			"org.apache.hadoop.hbase.codec.KeyValueCodecWithTags")
 		if !bytes.Equal(expected, buf) {
 			t.Errorf("expected %v, got %v", expected, buf)
 		}
@@ -108,7 +108,7 @@ func TestSendHello(t *testing.T) {
 	c.ctype = RegionClient
 	mockConn.EXPECT().Write(gomock.Any()).Return(78, nil).Times(1).Do(func(buf []byte) {
 		expected := []byte("HBas\x00P\x00\x00\x00J\n\x06\n\x04root\x12\rClientService\x1a+" +
-			"org.apache.hadoop.hbase.codec.KeyValueCodec\"\x04mock")
+			"org.apache.hadoop.hbase.codec.KeyValueCodecWithTags\"\x04mock")
 		if !bytes.Equal(expected, buf) {
 			t.Errorf("expected %q, got %q", expected, buf)
 		}
